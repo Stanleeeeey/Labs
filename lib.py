@@ -1,4 +1,7 @@
 import numpy as np
+import math
+
+GRAVITY = 9.81
 
 def ua(values:np.array):
 
@@ -16,3 +19,8 @@ def get_maximums(values: np.array, accuracy: np.float64,  reaction_time: np.floa
     mean   = np.mean(values)
 
     return mean-uc, mean+uc
+
+def I(T:np.float64, m: np.float64, d:np.float64):
+    return ((T**2 * m * GRAVITY * d / 2)/ (4*math.pi))
+
+
