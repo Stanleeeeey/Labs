@@ -51,3 +51,12 @@ u_I0 = np.sqrt(u_mI0**2 + u_dI0**2 + u_II0**2)
 
 print(f"I0 ze Steinera: {I0} +- {u_I0}")
 
+#wyliczanie I_0 z teori 
+u_mI0 = 0.5 * np.abs((1/8 * min_m * (d**2 + D**2)) - (1/8 * max_m * (d**2 + D**2)))
+u_dI0 = 0.5 * np.abs((1/8 * m * (min_d**2 + D**2)) - (1/8 * m * (max_d**2 + D**2)))
+u_DI0 = 0.5 * np.abs((1/8 * m * (d**2 + min_D**2)) - (1/8 * m * (d**2 + max_D**2)))
+
+I0   = 1/8 * m * (d**2 + D**2)
+u_I0 = np.sqrt(u_mI0**2 + u_dI0**2 + u_DI0**2)
+
+print(f"I0 z Teorii: {I0} +- {u_I0}")
