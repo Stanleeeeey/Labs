@@ -27,11 +27,27 @@ D = np.mean(D)
 m = np.mean(m)
 T = np.mean(T)
 
+
+#wyliczanie I
 u_TI = 0.5* np.abs((max_T**2 * m * GRAVITY * d / 2) / (4*math.pi**2) - (min_T**2 * m * GRAVITY * d / 2) / (4*math.pi**2))
 u_mI = 0.5* np.abs((T**2 * max_m * GRAVITY * d / 2) / (4*math.pi**2) - (T**2 * min_m * GRAVITY * d / 2) / (4*math.pi**2))
 u_dI = 0.5* np.abs((T**2 * m * GRAVITY * max_d / 2) / (4*math.pi**2) - (T**2 * m * GRAVITY * min_d / 2) / (4*math.pi**2))
 
+
+I  = (T**2 * m * GRAVITY * d / 2) / (4*math.pi**2)
 uI = np.sqrt( u_TI**2  +  u_mI**2 +  u_dI**2)
 
+print(f"I: {I} +- {uI}")
 
-print(uI)
+#wyliczanie I_0 na podstawie tw steinera
+min_I, max_I = I- uI, I+uI
+
+u_mI0 = 0.5 * np.abs((I - min_m * (d/2)**2) - (I - max_m * (d/2)**2))
+u_dI0 = 0.5 * np.abs((I - m * (min_d/2)**2) - (I - m * (max_d/2)**2))
+u_II0 = 0.5 * np.abs((min_I - m * (d/2)**2) - (max_I - m * (d/2)**2))
+
+I0   = (I - m * (d/2)**2)
+u_I0 = np.sqrt(u_mI0**2 + u_dI0**2 + u_II0**2)
+
+print(f"I0 ze Steinera: {I0} +- {u_I0}")
+
