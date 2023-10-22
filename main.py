@@ -14,14 +14,14 @@ T_file = pd.read_csv(data_path  + "T.csv")
 d = d_file["d[mm]"].to_numpy().astype(np.float64) / 1000
 D = D_file["D[mm]"].to_numpy().astype(np.float64) / 1000
 m = m_file["m[g]"].to_numpy().astype(np.float64) / 1000
-T = T_file["T[s]"].to_numpy().astype(np.float64) /50
+T = T_file["T[s]"].to_numpy().astype(np.float64) / 50
 
 
 
 min_d, max_d = get_maximums(d, 0.00002)
 min_D, max_D = get_maximums(D, 0.00002)
 min_m, max_m = get_maximums(m, 0.0001)
-min_T, max_T = get_T_maximums(T, 0.01, 0.1)
+min_T, max_T = get_maximums(T, 0.01, 0.1)
 
 
 d = np.mean(d)
@@ -48,6 +48,8 @@ min_I, max_I = I- uI, I+uI
 u_mI0 = 0.5 * np.abs((I - max_m * (d/2)**2) - (I - min_m * (d/2)**2))
 u_dI0 = 0.5 * np.abs((I - m * (max_d/2)**2) - (I - m * (min_d/2)**2))
 u_II0 = 0.5 * np.abs((max_I - m * (d/2)**2) - (min_I - m * (d/2)**2))
+
+
 
 
 I0   = (I - m * (d/2)**2)
