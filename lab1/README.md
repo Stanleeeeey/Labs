@@ -1,0 +1,1 @@
+# Potwierdzanie tw. Steinera

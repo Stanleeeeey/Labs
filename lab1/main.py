@@ -29,6 +29,7 @@ D = np.mean(D)
 m = np.mean(m)  
 T = np.mean(T)
 
+print(d,D, m, T)
 
 
 #wyliczanie I

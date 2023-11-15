@@ -19,7 +19,7 @@ def get_maximums(values: np.array, accuracy: np.float64,  reaction_time: np.floa
 
     
     uc =  np.sqrt(ua(values)**2 + ub(accuracy, reaction_time)**2)
-    
+    print(f"ua: {ua(values)} ub: {ub(accuracy, reaction_time)} uc: {uc}")
     mean   = np.mean(values)
 
     return mean-uc, mean+uc
