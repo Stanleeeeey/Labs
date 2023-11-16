@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import math
 
 from lib import get_maximums
 
@@ -22,4 +23,8 @@ t = t_file["t[s]"].to_numpy().astype(np.float64)
 d_min, d_max = get_maximums(d, 0.01 / 1000)
 h_min, h_max = get_maximums(h, 1 / 1000)
 t_min, t_max = get_maximums(t, 0.01, 0.5)
+
+d_mean = np.mean(d)
+h_mean = np.mean(h)
+t_mean = np.mean(t)
 
