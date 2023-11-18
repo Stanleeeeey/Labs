@@ -34,13 +34,13 @@ h = np.mean(h)
 t = np.mean(t)
 
 
-u_Ft_d = 0.5 *np.abs(6 * np.pi * density * d_max * h / t - 6 * np.pi * density * d_min * h / t)
-u_Ft_h = 0.5 *np.abs(6 * np.pi * density * d * h_max / t - 6 * np.pi * density * d * h_min / t)
-u_Ft_t = 0.5 *np.abs(6 * np.pi * density * d * h / t_max - 6 * np.pi * density * d * h / t_min)
+u_Ft_d = 0.5 *np.abs(3 * np.pi * density * d_max * h / t - 3 * np.pi * density * d_min * h / t)
+u_Ft_h = 0.5 *np.abs(3 * np.pi * density * d * h_max / t - 3 * np.pi * density * d * h_min / t)
+u_Ft_t = 0.5 *np.abs(3 * np.pi * density * d * h / t_max - 3 * np.pi * density * d * h / t_min)
 
 
 u_Ft = np.sqrt(u_Ft_d ** 2 + u_Ft_h ** 2 + u_Ft_t ** 2)
 
-Ft = 6 * np.pi * density * d * h / t
+Ft = 3 * np.pi * density * d * h / t
 
 print(f"F_t = {Ft} N +- {u_Ft}")
