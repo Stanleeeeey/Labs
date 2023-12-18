@@ -70,10 +70,7 @@ u_P_U = 0.5*np.abs(U*I_min - U*I_max)
 
 u_P = np.sqrt(u_P_I**2 + u_P_U**2)
 
-
-print(u_P_I[0], u_P_U[0], u_P[0])
 P = U*I
-
 
 u_delta_T_T = 0.5*np.abs((T-T_0 + u_T) - (T-T_0 - u_T))
 u_delta_T_T_0 = 0.5*np.abs((T-T_0 + u_T_0) - (T-T_0 - u_T_0))
@@ -86,11 +83,13 @@ plt.xlim(0, 130)
 plt.ylim(0, 0.0021) 
 plt.grid()
 
-a, b = np.polyfit(T- T_0, delta_l/L_0, 1)
+(a, b), covariance = np.polyfit(T- T_0, delta_l/L_0, 1, cov=True)
 x_reg = np.linspace(0, 150, 1000) 
 print(f"y = {a}*x + {b}")
 
+u_m, u_b = np.sqrt(np.diag(covariance))
 
+print(u_m)
 plt.plot(x_reg, a*x_reg + b, x_reg, color = "lightsteelblue")
 plt.errorbar(y= delta_l/L_0, x=T-T_0, yerr=u_L_by_L_0, xerr=u_delta_T ,fmt='o', capsize=5, markersize = 0, color = "blue")
 plt.savefig("x.png", bbox_inches='tight')
@@ -111,7 +110,3 @@ plt.plot(x_reg, a1 * x_reg + b1, color="lightsteelblue")  # Remove the second ar
 plt.errorbar(y=P, x=T - T_0, yerr=u_P, xerr=u_delta_T, fmt='o', capsize=5, markersize=0, color="blue")
 
 plt.savefig("y.png", bbox_inches='tight')
-
-
-for i in range(len(u_T)):
-    print(f"{i+1} & ${u_L_L_by_L_0[i]}$ & ${u_L_0_L_by_L_0[i]}$ & ${u_L_by_L_0[i]}$ & ${u_delta_T_T[i]}$ & ${u_delta_T_T_0[i]}$ & ${u_delta_T[i]}$")
